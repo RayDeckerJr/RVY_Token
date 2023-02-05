@@ -17,6 +17,7 @@ function Balance() {
 
     setBalance(balance.toLocaleString());
     setSymbol(await token.getSymbol());
+    setHidden(false);
     
   }
 
