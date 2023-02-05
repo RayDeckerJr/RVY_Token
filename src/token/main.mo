@@ -12,14 +12,19 @@ actor Token{
     var symbol: Text = "RVY";
 
     var balances = HashMap.HashMap<Principal,Nat>(1,Principal.equal,Principal.hash);
-
     balances.put(owner, totalSupply);
 
-    public query func balanceOf(who: Principal) :async Nat{
+    public query func balanceOf(who: Principal) :async Nat {
         let balance : Nat = switch (balances.get(who)){
             case null 0;
             case(?result) result;
-        }
+        };
+
+        return balance;
     };
+
+    public query func getSymbol(): async Text {
+        return symbol;
+    }
     
 }
